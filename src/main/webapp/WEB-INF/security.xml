@@ -13,7 +13,13 @@
         <intercept-url pattern="/home.jsp" access="ROLE_USER,ROLE_ADMIN"/>
         <intercept-url pattern="/admin.jsp" access="ROLE_ADMIN"/>
 
-<!--        <logout logout-url="/custom_logout_url" />-->
+        <form-login
+                login-page="/login.jsp"
+                default-target-url="/home.jsp"
+                authentication-failure-url="/login?error"
+                username-parameter="j_username"
+                password-parameter="j_password" />
+
     </http>
 
     <authentication-manager>
