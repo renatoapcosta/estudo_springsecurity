@@ -1,15 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Admin</title>
+  <title>403</title>
 </head>
 <body>
-
-<%
-  String txtInicial = "Pagina ADM";
-%>
-<h1><%=txtInicial%></h1>
-
+<h1>Acesso negado 403</h1>
 
 <h2>Protegida</h2>
 
