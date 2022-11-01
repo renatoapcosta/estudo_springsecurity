@@ -84,3 +84,60 @@ login.jsp
 
 </http>
 ```
+
+## Migração do Spring Security 3.2 para 5.7.4
+
+O csrf vem habilitado por padrão, podemos desabilitar
+
+```
+<csrf disabled="true"/>
+```
+
+Precisamos adicionar um bean para validar as url
+
+```
+ <bean:bean id="httpFirewall" class="org.springframework.security.web.firewall.StrictHttpFirewall" >
+        <bean:property name="allowUrlEncodedDoubleSlash" value="true" />
+        <bean:property name="allowBackSlash" value="true" />
+        <bean:property name="allowUrlEncodedSlash" value="true" />
+        <bean:property name="allowSemicolon" value="true" />
+    </bean:bean>
+
+    <http-firewall ref="httpFirewall"/>
+```
+
+O authentication-provider exige de forma explicita o password-encoder.
+
+```
+<bean:bean id="passwordEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder" />
+
+
+<authentication-manager>
+    <authentication-provider>
+        <password-encoder ref="passwordEncoder"/>
+        <user-service>
+            <user name="admin"
+                  password="admin"
+                  authorities="ROLE_USER,ROLE_ADMIN"/>
+            <user name="user"
+                  password="user"
+                  authorities="ROLE_USER"/>
+        </user-service>
+    </authentication-provider>
+</authentication-manager>
+```
+
+No form-login é necessário informar os campos para username e password
+
+```
+<http>
+...
+  <form-login login-page="/login.jsp" default-target-url="/home.jsp"
+                    authentication-failure-url="/login.jsp?error=1"
+                    login-processing-url="/j_spring_security_check"
+                    username-parameter="j_username"
+                    password-parameter="j_password"
+                    always-use-default-target="false" />
+  ...
+</http>
+```
