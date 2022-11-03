@@ -84,3 +84,39 @@ login.jsp
 
 </http>
 ```
+
+## Adicionando arquivo de propriedades com profile
+
+security.xml
+```
+<context:property-placeholder location="classpath:application.properties" order="0" ignore-unresolvable="true"/>
+<context:property-placeholder location="classpath:application-${spring.profiles.active:prd}.properties" order="1" ignore-unresolvable="true"/>
+```
+
+application.properties
+```
+spring.profiles.active=prd
+```
+
+application-prd.properties
+```
+spring.profiles.active=prd
+```
+
+application-dev.properties
+```
+spring.profiles.active=dev
+```
+
+## Adicionando um bean
+
+security.xml
+```
+<context:component-scan base-package="br.com.ractecnologia.beans" />
+```
+
+```
+package br.com.ractecnologia.beans;
+@Service
+public class MeuBean { }
+```
