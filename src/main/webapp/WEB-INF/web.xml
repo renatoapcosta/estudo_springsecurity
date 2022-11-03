@@ -13,8 +13,16 @@
 
     <!-- Configurações SPRING SECURITY -->
     <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        </param-value>
+    </context-param>
+
+
+    <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/security.xml</param-value>
+        <param-value>br.com.ractecnologia.config,br.com.ractecnologia.beans</param-value>
     </context-param>
 
     <listener>

@@ -120,3 +120,39 @@ package br.com.ractecnologia.beans;
 @Service
 public class MeuBean { }
 ```
+
+## Migração de xml para annotation
+
+No web.xml
+
+```
+<context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/security.xml</param-value>
+</context-param>
+```
+
+```
+<context-param>
+    <param-name>contextClass</param-name>
+    <param-value>
+        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+    </param-value>
+</context-param>
+
+<context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>br.com.ractecnologia.config,br.com.ractecnologia.beans</param-value>
+</context-param>
+```
+
+Crie uma classe
+
+```
+@EnableWebSecurity
+@Configuration
+public class CustomWebSecurityConfigurerAdapter extends
+        WebSecurityConfigurerAdapter {
+        
+ }
+```
