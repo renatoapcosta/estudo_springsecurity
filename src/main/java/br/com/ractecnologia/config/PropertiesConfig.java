@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class PropertiesConfig {
 
     @Bean
-    public static PropertySourcesPlaceholderConfigurer propPlaceholder(Environment env ) {
+    public static PropertySourcesPlaceholderConfigurer props(Environment env ) {
         final PropertySourcesPlaceholderConfigurer propertyConfigurer = new PropertySourcesPlaceholderConfigurer();
         final List<Resource> resources = Arrays.stream(env.getActiveProfiles()).map(c -> new PathMatchingResourcePatternResolver()
                         .getResource(String.format("classpath:application-%s.properties", c)))
