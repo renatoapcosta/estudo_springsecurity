@@ -14,10 +14,11 @@ public class MeuBean {
     @Value("${tag.two}")
     private String tagTwo;
 
+    @Value("${global.raiz}")
+    private String globalRaiz;
+
     @Value("${spring.profiles.active:default}")
     private String profile;
-
-
 
     public MeuBean() {
         System.out.println(getClass().getSimpleName() + " instaciado ----------------------------");
@@ -26,9 +27,9 @@ public class MeuBean {
     @PostConstruct
     public void postCOnstructor() {
         System.out.println("Post constructor ");
-        System.out.println("meu.nome: "+ meuNome);
-        System.out.println("tag.two: "+ tagTwo);
-        System.out.println("spring.profiles.active: "+ profile);
-
+        System.out.println("meu.nome: " + meuNome);
+        System.out.println("tag.two: " + tagTwo);
+        System.out.println("global.raiz: " + globalRaiz);
+        System.out.println("spring.profiles.active: " + profile);
     }
 }

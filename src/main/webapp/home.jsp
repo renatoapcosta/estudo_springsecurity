@@ -15,6 +15,8 @@
 
 <a href="index.jsp">Ir para index</a><br />
 <a href="admin.jsp">Ir para admin</a><br />
+<a href="servlet.do">Ir para Servlet</a><br />
+
 
 <a href="j_spring_security_logout">Logout</a>
 
