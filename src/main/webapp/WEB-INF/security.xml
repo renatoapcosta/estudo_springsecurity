@@ -59,7 +59,14 @@
 
     <bean id="passwordEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder" />
 
-    <context:property-placeholder location="classpath:application.properties" order="0" ignore-unresolvable="true"/>
-    <context:property-placeholder location="classpath:application-${spring.profiles.active:prd}.properties" order="1" ignore-unresolvable="true"/>
+    <bean id="props" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+                <value>classpath:application-${spring.profiles.active:prd}.properties</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="true" />
+    </bean>
 
 </beans>

@@ -42,7 +42,7 @@
 
     <servlet>
         <servlet-name>MeuServlet</servlet-name>
-        <servlet-class>br.com.ractecnologia.MeuServlet</servlet-class>
+        <servlet-class>br.com.ractecnologia.servlet.MeuServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
