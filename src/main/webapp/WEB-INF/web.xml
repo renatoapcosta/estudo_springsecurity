@@ -13,8 +13,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
 
     <!-- Configurações SPRING SECURITY -->
     <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        </param-value>
+    </context-param>
+
+
+    <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/security.xml</param-value>
+        <param-value>br.com.ractecnologia.config,br.com.ractecnologia.beans</param-value>
     </context-param>
 
     <listener>
