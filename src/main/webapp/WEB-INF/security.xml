@@ -38,6 +38,8 @@
 
         <sec:access-denied-handler error-page="/403.jsp"/>
 
+        <sec:custom-filter ref="beforeAuthenticationProcessingFilter" before="FORM_LOGIN_FILTER" />
+
         <sec:session-management>
             <sec:concurrency-control max-sessions="1" />
         </sec:session-management>
@@ -79,5 +81,7 @@
         </property>
         <property name="ignoreResourceNotFound" value="true" />
     </bean>
+
+    <bean id="beforeAuthenticationProcessingFilter" class="br.com.ractecnologia.filter.BeforeAuthenticationProcessingFilter" />
 
 </beans>
